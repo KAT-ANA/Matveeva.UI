@@ -1,0 +1,23 @@
+﻿@using Shop.Domain.Entities
+@using Matveeva.UI
+<h3>Детали</h3>
+
+
+
+	@if(tovar!=null)
+	{
+	<div class="card mt-5" style="width: 18rem;">
+	<img src="@tovar.Image" class="card-img-top" alt="...">
+	<div class="card-body">
+	<h5 class="card-title">@tovar.Name</h5>
+	<p class="card-text">@tovar.Description</p>
+
+	</div>
+	</div>
+	}
+	@code {
+	[Parameter]
+	public Tovar tovar { get; set; }
+	[Parameter]
+	public EventCallback<Tovar> TovarChanged { get; set; }
+	}

@@ -1,0 +1,30 @@
+﻿@page "/products"
+@using Matveeva.Blazor.Components.ProductComponents
+@using Shop.Domain.Entities
+@using Shop.Domain.Models
+@using Matveeva.Blazor.Services
+
+
+@rendermode InteractiveServer
+
+<CascadingValue Value="ProductService">
+<KosList TovarSelected="ShowDetails" />
+<Pager/>
+</CascadingValue>
+
+<KosDetails tovar="SelectedTovar" />
+
+@code {
+[Inject] IProductService<Tovar> ProductService { get; set; }
+
+[Parameter]
+	public Tovar SelectedTovar { get; set; }
+	protected override async Task OnInitializedAsync()
+	{
+	await ProductService.GetProducts();
+	}
+	void ShowDetails(int id)
+	{
+	SelectedTovar = ProductService.Products.First(d => d.Id == id);
+	}
+}

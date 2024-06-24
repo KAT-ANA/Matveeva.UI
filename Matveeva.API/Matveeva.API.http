@@ -1,0 +1,6 @@
+@Matveeva.API_HostAddress = http://localhost:5010
+
+GET {{Matveeva.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
